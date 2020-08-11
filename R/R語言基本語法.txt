@@ -1,0 +1,137 @@
+R語言
+
+一、  安裝套件Package的方法如下：
+##  install.packages("套件名稱") 值得注意的是，套件名稱需要加上雙引號，舉例來說，若要安裝ggplot2套件，則要在R的Console視窗內輸入：
+install.packages("ggplot2")
+
+##若要載入已安裝的套件，則輸入library(套件名稱)，範例：
+library(ggplot2)
+載入已安裝的套件時，可以不用在套件名稱前後加雙引號，但也可以加 （參考資料）。
+
+
+
+二、函數使用：在R中有許多內建函數，安裝套件後各套件也會提供各式各樣寫好的函數，函數使用方式為函數名稱(參數1,參數2,....)，以計算平均數為例，可使用mean()函數，範例如下:
+ 
+mean(c(1,2,3,4,5,6)) ##計算1~6的平均數
+
+?mean
+
+除非有指定參數名稱，函數的參數設定有順序性，如序列產生函數seq()，參數順序為from, to, by，代表序列起點、序列終點，以及相隔單位。
+seq(from=1,to=9,by=2) #1~9，每隔2產生一數字
+seq(1,9,2)#按照順序輸入參數，可省去參數名稱
+seq(by=2,to=9,from=1)#若不想照順序輸入參數，需要指定參數名稱
+
+
+
+三、變數設定：變數設定，在R語言中，主要使用<-設定變數，設定方法為：變數名稱<-變數內容(值)，雖然變數名稱可依箭頭方向放置於左側<-或右側->，但為方便閱讀，變數名稱多放置於左側。
+a<-1 
+2->b
+a
+b
+R語言也接受使用=設定變數，此時變數名稱必須在左側，如：變數名稱=變數內容
+c=1 
+c
+
+除了變數設定外，str()函數也為常用基本函數，str()用在檢查與總覽各類變數型態。
+d<-3
+str(d)
+
+
+變數的命名有以下規則:
+不可使用保留字，如break, else, FALSE, for, function, if, Inf, NA, NaN, next, repeat, return, TRUE, while等
+開頭只能是英文字，或 .
+大小寫敏感
+
+
+四、資料型態
+在R語言中，常用的資料型態包括數值 (numeric)、字串 (character)、布林變數 (logic)以及日期 (Date)等。
+
+1. 數值 numeric：數值包括整數（沒有小數點）與浮點數（有小數點）的數值
+num1<-100 
+num2<-1000.001
+
+值得注意的是，若數值長度超過 2^53，必須導入bit64 package (Oehlschlagel 2020)，將數值長度上限提高為2^63，才能表示完整數值
+print(2^53, digits=20) 
+print(2^53+1, digits=20) # +1後，數值仍與2^53相同
+install.packages("bit64")
+library(bit64) # 導入bit64 package
+print(as.integer64(2)^53, digits=20)
+print(as.integer64(2)^53+1, digits=20)# 導入bit64後，可得正確答案
+
+2. 字串 character：用雙引號"框起的文字會被儲存為字串格式，若在數字前後加上雙引號，數字也會被儲存為文字形式，無法進行數值的加減乘除等運算。
+char1<-"abcTest" 
+char2<-"100"
+char3<-"200"
+
+3. 布林變數 logic：用於邏輯判斷，可使用大寫TRUE或T代表真，大寫FALSE或F代表假。
+boolT<-TRUE
+boolT1<-T
+boolF<-FALSE
+boolF1<-F
+
+4. 日期 (Date)：用於表示日期，於資料分析中常用，使用Sys.Date()指令可得系統日期。
+dateBook<-Sys.Date()
+dateBook
+日期與字串的相關轉換操作可考慮使用簡單易懂的lubridate(Spinu, Grolemund, and Wickham 2020) package，如果想要將年/月/日格式的文字轉換為日期物件，可使用ymd()函數（y表年year，m表月month，d表日day），如果想要將月/日/年格式的文字轉換為日期物件，則使用mdy()函數，以此類推。
+install.packages("lubridate")
+library(lubridate)
+ymd('2012/3/3')
+mdy('3/3/2012')
+
+
+五、基本運算子
+1.數學基本運算：在R中，數學運算與其他程式語言相同
+加 +   減 -   乘 *   除 /   餘數 %%   次方 ^
+num1<-1
+num2<-100
+num1+num2
+num1-num2
+num1*num2
+num1/num2
+100%%3 ##100除以3後所得餘數
+2^3 ##2的3次方
+
+###進階數學函數 - 四捨五入 round() - 無條件捨去 floor() - 無條件進位 ceiling()
+num1<-1.568
+num2<-2.121
+round(num2,digits = 1) #2.121四捨五入至小數點第一位
+floor(num1) ##1.568
+ceiling(num2) ##2.121
+
+
+2. 邏輯運算：常用之邏輯判斷也可在R中直接使用
+大於 >     小於 <    等於 ==，為了不與變數設定混淆，判斷兩變數是否相等，要用雙等號
+大於等於 >=    小於等於 <=    
+num1<-1
+num2<-100
+num1>num2
+num1<num2
+
+
+3. 文字字串也可比較大小
+char1<-"abcTest" 
+char2<-"defTest"
+char1>char2
+
+
+4. 邏輯混合判斷，和JAVA等語言不同的是，在R中使用單符號即可表示且&和或|
+且 &   或 |
+TRUE & TRUE
+TRUE & FALSE
+TRUE | TRUE
+TRUE | FALSE
+
+反向布林變數!
+!TRUE
+!FALSE
+
+
+六、 錯誤訊息
+Message：有可能的錯誤通知，程式會繼續執行
+Warning：有錯誤，但是不會影響太多，程式會繼續執行
+Error：有錯，而且無法繼續執行程式
+Condition：可能會發生的情況
+log(-1)
+mena(NA)  ## Error in mena(NA): 沒有這個函數 "mena"
+
+
