@@ -7,7 +7,7 @@ d='海'
 
 count = 0
 while count < len(s):
-    if d == s[count]:
-    return(True)
+    if d!=s[count]:
+        return False
 
 print('結果：',d in s)
