@@ -95,8 +95,8 @@ num1/num2
 num1<-1.568
 num2<-2.121
 round(num2,digits = 1) #2.121四捨五入至小數點第一位
-floor(num1) ##1.568
-ceiling(num2) ##2.121
+floor(num1) ##1.568  無條件捨去至整數
+ceiling(num2) ##2.121 無條件進位至整數
 
 
 2. 邏輯運算：常用之邏輯判斷也可在R中直接使用
