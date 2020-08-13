@@ -1,0 +1,5 @@
+
+Sherly 跟 Eddie 兩個人在差不多的時間都從 Git Server 上拉了一份資料下來準備進行開發。
+Sherly 手腳比較快，先完成了，於是先把做好的成果推一份上去。
+Eddie 不久後也完成了，但當他要推上去的時候發現推不上去了…
+via https://gitbook.tw/chapters/github/fail-to-push.html
