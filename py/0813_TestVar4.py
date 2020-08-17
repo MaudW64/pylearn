@@ -1,4 +1,4 @@
-# 索引切片
+# 索引切片  [start:step]
 text = 'Hello'
 """
 
