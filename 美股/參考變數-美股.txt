@@ -3,6 +3,7 @@ S&P 500（標準普爾500指數）
 Dow Jones Industrial Average（道.瓊斯工業平均指數指數）
 Nasdaq Composite Index（納斯達克綜合指數）
 Russell 2000 Index（羅素2000指數）
+SOX（費城半導體指數）Charts for PHLX Semiconductor
 
 ETF
 標準普爾500
