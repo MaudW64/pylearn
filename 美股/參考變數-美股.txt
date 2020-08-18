@@ -1,0 +1,12 @@
+指數
+S&P 500（標準普爾500指數）
+Dow Jones Industrial Average（道.瓊斯工業平均指數指數）
+Nasdaq Composite Index（納斯達克綜合指數）
+Russell 2000 Index（羅素2000指數）
+
+ETF
+標準普爾500
+VT（全球股市股票ETF）Vanguard Total World Stock ETF
+VTI（美股股市ETF）Vanguard Total Stock Market ETF
+BND（美國債券ETF）Vanguard Total Bond Market ETF
+BNDX（國際債券ETF）Vanguard Total International Bond ETF
